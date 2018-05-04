@@ -7,3 +7,6 @@ The `.browserslistrc` file is a list of browsers that front-end tools will targe
 * Babel
 
 You can test your Browserslist query configurations via [this tool](http://browserl.ist/).
+
+## Webpack
+The `webpack.config.js` file uses Webpack 4's default regarding `src` and `dist`. The entry point is `src/index.js` which will build to `dist/main.js`.
