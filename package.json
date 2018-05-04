@@ -1,5 +1,5 @@
 {
-  "name": "carbon",
+  "name": "@sparkbox/carbon",
   "version": "0.1.0",
   "description": "Core elements for Sparkbox projects",
   "scripts": {
