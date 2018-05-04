@@ -2,18 +2,23 @@
   "name": "@sparkbox/carbon",
   "version": "0.1.0",
   "description": "Core elements for Sparkbox projects",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sparkbox/carbon.git"
   },
-  "keywords": ["sparkbox", "starter"],
+  "keywords": [
+    "sparkbox",
+    "starter"
+  ],
   "author": "Sparkbox",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/sparkbox/carbon/issues"
   },
-  "homepage": "https://github.com/sparkbox/carbon#readme"
+  "homepage": "https://github.com/sparkbox/carbon#readme",
+  "devDependencies": {
+    "chalk": "^2.4.1",
+    "node-sass": "^4.9.0"
+  }
 }
