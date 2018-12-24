@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "description": "Core elements for Sparkbox projects",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postsass": "postcss dist/css/*.css -u autoprefixer --no-map -d dist/css"
   },
   "repository": {
     "type": "git",
@@ -20,9 +21,11 @@
   },
   "homepage": "https://github.com/sparkbox/carbon#readme",
   "dependencies": {
+    "autoprefixer": "^9.4.3",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.6.1",
+    "postcss-cli": "^6.1.0",
     "webpack": "^4.7.0",
     "webpack-cli": "^2.1.2"
   }
