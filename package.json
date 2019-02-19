@@ -2,11 +2,6 @@
   "name": "@sparkbox/carbon",
   "version": "0.1.0",
   "description": "Core elements for Sparkbox projects",
-  "scripts": {
-    "eslint": "eslint src/js/**/*.js tasks/*.js --color",
-    "test": "npm run test:js",
-    "test:js": "npm run eslint"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sparkbox/carbon.git"
