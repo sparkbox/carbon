@@ -18,6 +18,8 @@
   "homepage": "https://github.com/sparkbox/carbon#readme",
   "dependencies": {
     "babel-core": "^6.26.3",
+    "@babel/preset-env": "^7.3.1",
+    "babel-eslint": "^10.0.1",
     "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.6.1",
     "webpack": "^4.7.0",
