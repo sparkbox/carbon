@@ -1,8 +1,6 @@
 module.exports = {
-  globals: {
-    describe: 'write',
-    it: 'write',
-    expect: 'write',
+  env: {
+    mocha: true,
   },
   rules: {
     'no-unused-expressions': 'off',
