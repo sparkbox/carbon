@@ -7,6 +7,7 @@
     "url": "git+https://github.com/sparkbox/carbon.git"
   },
   "scripts": {
+    "start:dev": "webpack-dev-server --color",
     "test": "mocha --require @babel/register './specs/*-spec.js'"
   },
   "keywords": [
@@ -24,14 +25,17 @@
     "@babel/preset-env": "^7.3.1",
     "@babel/register": "^7.0.0",
     "babel-eslint": "^10.0.1",
-    "babel-loader": "^7.1.4",
+    "babel-loader": "^8.0.5",
     "chai": "^4.2.0",
     "eslint": "^5.2.0",
     "eslint-config-sparkbox": "^0.5.1",
     "mocha": "^6.0.0",
     "stylelint": "^9.4.0",
     "stylelint-config-sparkbox": "^0.1.0",
-    "webpack": "^4.7.0",
-    "webpack-cli": "^2.1.2"
+    "webpack": "^4.29.5",
+    "webpack-cli": "^3.2.3"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^3.2.0"
   }
 }
