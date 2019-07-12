@@ -4,7 +4,6 @@ module.exports = {
   module: {
     rules: [
       {
-      {
         // CSS
         test: /\.scss$/,
         use: [
@@ -21,16 +20,16 @@ module.exports = {
         use: {
           loader: 'babel-loader'
         }
-          },
-        },
-  plugins: [
+      }
     ],
-    // extract CSS to separate file in production
-    new MiniCssExtractPlugin({
-      // Options similar to the same options in webpackOptions.output
-      // both options are optional
-      filename: 'styles.[contenthash:8].css',
-      chunkFilename: '[id].css'
-    }),
-  ]
+    plugins: [
+      // extract CSS to separate file in production
+      new MiniCssExtractPlugin({
+        // Options similar to the same options in webpackOptions.output
+        // both options are optional
+        filename: 'styles.[contenthash:8].css',
+        chunkFilename: '[id].css'
+      }),
+    ]
+  }
 };
