@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="{{htmlWebpackPlugin.site.description}}">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="apple-touch-icon" href="icon.png">
+  <meta name="theme-color" content="{{htmlWebpackPlugin.site.themeColor}}">
+  <title>{{htmlWebpackPlugin.site.title}}</title>
+  <script>
+    if (!'Promise' in self) {
+      (function() {
+        var s = document.createElement('script');
+        s.defer = true;
+        s.src = '{{htmlWebpackPlugin.files.chunks.promisePolyfill.entry}}';
+        document.head.appendChild(s);
+      })();
+    }
+  </script>
+</head>
+<body>
+  <h1>Carbon</h1>
+</body>
+</html>
