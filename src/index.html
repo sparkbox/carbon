@@ -1,0 +1,23 @@
+<!doctype html>
+<!--[if lt IE 7 ]> <html lang="en" class="ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
+<html lang="en" class="no-js"></html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="apple-touch-icon" href="icon.png">
+  <title>carbon</title>
+  <script>
+    window.__PROMISE_POLYFILL__ = "${webpack.publicPath}" + <% print(JSON.stringify(
+        webpack.chunks.find(c => c.names.includes('promisePolyfill')).files[0]
+    )) %>;
+  </script>
+</head>
+<body>
+  <h1>carbon</h1>
+</body>
+</html>
