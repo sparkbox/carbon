@@ -109,7 +109,7 @@ module.exports = {
     new CopyWebpackPlugin(
       [
         {
-          from: res('assets/'),
+          from: res('src/assets/'),
           to: res('dist/')
         }
       ],
@@ -160,5 +160,23 @@ module.exports = {
     new HardSourceWebpackPlugin(),
 
     // analyze build
-  ]
+  ],
+
+  // performance monitoring
+  performance: {
+    runtimeChunk: {
+      name: 'bootstrap'
+    },
+    hints: 'warning',
+    maxAssetSize: 200000, // int (in bytes),
+    maxEntrypointSize: 400000, // int (in bytes)
+    assetFilter: function(assetFilename) {
+      // Function predicate that provides asset filenames
+      return assetFilename.endsWith('.css') || assetFilename.endsWith('.js');
+    }
+  },
+
+  // Fail out on the first build error in production builds
+  bail: PROD
+
 };
