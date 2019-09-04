@@ -4,7 +4,7 @@ module.exports = function(api) {
   const presets = [
     [
       // preset-env will read from .browserslistrc to add the necessary transforms
-      // !! make sure you update .browserslistrc to suite your project !!
+      // !! make sure you update .browserslistrc to suit your project !!
       '@babel/preset-env',
       {
         // this option gives control to webpack (or rollup)
