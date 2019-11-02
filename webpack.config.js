@@ -7,6 +7,7 @@ const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const PROD = process.env.NODE_ENV === 'production';
 const filename = `[name]${PROD ? '.[contenthash:8]' : ''}.js`;
@@ -146,5 +147,13 @@ module.exports = {
     new HardSourceWebpackPlugin(),
 
     // analyze build
+    // https://www.npmjs.com/package/webpack-bundle-analyzer
+    // use this to inspect bundle contents and identify duplicate or extraneous code
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'static',
+      reportFilename: 'bundle-report.html',
+      defaultSizes: 'gzip',
+      openAnalyzer: false
+    })
   ]
 };
