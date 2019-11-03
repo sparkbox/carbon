@@ -23,9 +23,9 @@ function loadOtherPolyfills() {
   const polyfills = [];
 
   // add polyfills as needed here
-  if (!('Map' in window)) polyfills.push(import('core-js/features/map'));
-  if (!('Set' in window)) polyfills.push(import('core-js/features/set'));
-  if (!('Symbol' in window)) polyfills.push(import('core-js/features/symbol'));
+  // if (!('Map' in window)) polyfills.push(import('core-js/features/map'));
+  // if (!('Set' in window)) polyfills.push(import('core-js/features/set'));
+  // if (!('Symbol' in window)) polyfills.push(import('core-js/features/symbol'));
 
   return Promise.all(polyfills);
 }

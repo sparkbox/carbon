@@ -37,6 +37,7 @@ module.exports = {
   // entry points
   entry: {
     promisePolyfill: 'core-js/features/promise',
+    bootstrap: resolve('src/js/bootstrap.js'),
     styles: resolve('src/scss/styles.scss')
   },
 
