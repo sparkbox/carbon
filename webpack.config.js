@@ -4,13 +4,14 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
+const HtmlWebpackExcludeAssetsPlugin = require('html-webpack-exclude-assets-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const PROD = process.env.NODE_ENV === 'production';
-const filename = `[name]${PROD ? '.[contenthash:8]' : ''}.js`;
+const hash = PROD ? '.[contenthash:8]' : '';
 const resolve = (...pathSegments) => path.resolve(__dirname, ...pathSegments);
 
 module.exports = {
@@ -21,7 +22,7 @@ module.exports = {
   context: __dirname,
 
   // sourcemaps
-  devtool: PROD ? 'none' : 'cheap-module-eval-source-map',
+  devtool: PROD ? 'none' : 'source-map',
 
   // server
   devServer: {
@@ -33,10 +34,10 @@ module.exports = {
     writeToDisk: true
   },
 
-  // entry point
+  // entry points
   entry: {
     promisePolyfill: 'core-js/features/promise',
-    bootstrap: resolve('src/bootstrap.js'),
+    styles: resolve('src/scss/styles.scss')
   },
 
   // output config
@@ -45,8 +46,8 @@ module.exports = {
     path: resolve('dist'),
     publicPath: '/',
     // filenames use content based hashing
-    filename,
-    chunkFilename: filename
+    filename: `[name]${hash}.js`,
+    chunkFilename: `[name]${hash}.js`,
   },
 
   resolve: {
@@ -60,10 +61,21 @@ module.exports = {
       {
         test: /\.scss$/,
         use: [
-          PROD ? MiniCssExtractPlugin.loader : 'style-loader',
-          'css-loader',
-          'postcss-loader',
-          'sass-loader'
+          {
+            loader: MiniCssExtractPlugin.loader
+          },
+          {
+            loader: 'css-loader',
+            options: { sourceMap: !PROD }
+          },
+          {
+            loader: 'postcss-loader',
+            options: { sourceMap: !PROD }
+          },
+          {
+            loader: 'sass-loader',
+            options: { sourceMap: !PROD }
+          }
         ]
       },
       // JS
@@ -73,8 +85,7 @@ module.exports = {
         use: {
           loader: 'babel-loader'
         }
-      },
-      // images
+      }
     ]
   },
 
@@ -113,8 +124,12 @@ module.exports = {
     // variables can be passed with the options
     new HtmlWebpackPlugin({
       template: resolve('src/index.html'),
-      chunks: ['bootstrap']
+      chunks: ['bootstrap', 'styles'],
+      excludeAssets: [/styles.*\.js/]
     }),
+
+    // this is to exclude style.js or style.[chunkhash].js from html
+    new HtmlWebpackExcludeAssetsPlugin(),
 
     // this is an extension of the html plugin and will enhance script loading
     new ScriptExtHtmlWebpackPlugin({
@@ -127,12 +142,12 @@ module.exports = {
       }
     }),
 
-    // extract CSS to separate file in production
+    // extract CSS to separate file
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
       // both options are optional
-      filename: 'styles.[contenthash:8].css',
-      chunkFilename: '[id].css'
+      filename: `[name]${hash}.css`,
+      chunkFilename: `[name]${hash}.css`
     }),
 
     // make the cli output nicer
