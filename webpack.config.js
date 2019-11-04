@@ -162,14 +162,18 @@ module.exports = {
     // cache builds for much dev speed
     new HardSourceWebpackPlugin(),
 
-    // analyze build
-    // https://www.npmjs.com/package/webpack-bundle-analyzer
-    // use this to inspect bundle contents and identify duplicate or extraneous code
-    new BundleAnalyzerPlugin({
-      analyzerMode: 'static',
-      reportFilename: 'bundle-report.html',
-      defaultSizes: 'gzip',
-      openAnalyzer: false
-    })
+    ...(
+      process.env.STATS ? [
+        // analyze build
+        // https://www.npmjs.com/package/webpack-bundle-analyzer
+        // use this to inspect bundle contents and identify duplicate or extraneous code
+        new BundleAnalyzerPlugin({
+          analyzerMode: 'static',
+          reportFilename: 'bundle-report.html',
+          defaultSizes: 'gzip',
+          openAnalyzer: false
+        })
+      ] : []
+    )
   ]
 };

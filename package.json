@@ -8,6 +8,7 @@
   },
   "scripts": {
     "build": "NODE_ENV=production webpack -p",
+    "build:stats": "STATS=true npm run build && open dist/bundle-report.html",
     "start": "webpack-dev-server",
     "test": "echo 'please write tests'"
   },
