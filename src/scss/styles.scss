@@ -1,9 +1,25 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
 body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
   background-color: #F9F9F9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 h1 {
   font-family: monospace;
-  color: #1C4C55;
-  text-align: center;
+  color: #2D3F5B;
+
+  span {
+    vertical-align: middle;
+  }
 }

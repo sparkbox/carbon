@@ -11,13 +11,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="apple-touch-icon" href="icon.png">
   <title>carbon</title>
+</head>
+<body>
+  <h1><span>🌑</span> carbon</h1>
   <script>
     window.__PROMISE_POLYFILL__ = "${webpack.publicPath}" + <% print(JSON.stringify(
         webpack.chunks.find(c => c.names.includes('promisePolyfill')).files[0]
     )) %>;
   </script>
-</head>
-<body>
-  <h1>carbon</h1>
 </body>
 </html>
