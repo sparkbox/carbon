@@ -1,12 +1,15 @@
 # carbon
-Core elements of Sparkbox projects
+Core elements of Sparkbox projects. This repo is intended to be used as either a template for new webpack projects or as a resource for common build configuration files.
 
 ## Browserslist
 The `.browserslistrc` file is a list of browsers that front-end tools will target. Currently, the Carbon tools using `.browserslistrc` are:
 * Autoprefixer
 * Babel
 
-You can test your Browserslist query configurations via [this tool](http://browserl.ist/).
+You can test your Browserslist query configurations via [this tool](http://browserl.ist/), or by running `npx browserslist` in the root of your project.
+
+## Linting
+We have configuration files for [ESLint][eslint] and [stylelint][stylelint]. Both of these tools use standard configurations published by Sparkbox. Those can be installed as [eslint-config-sparkbox][eslintSB] and [@sparkbox/stylelint-config-sparkbox][stylelintSB].
 
 ## Webpack
 The `webpack.config.js` file is set up to handle the majority of scenarios we typically need for front-end builds. You can use this as a jumping off point and remove or add configurations as needed. Here's an overview of what's included:
@@ -18,7 +21,7 @@ The `webpack.config.js` file is set up to handle the majority of scenarios we ty
 Assets such as fonts and images will be copied recursively from `src/assets` to `dist/`. These files will be watched and re-copied during development.
 
 ### HTML
-This configuration uses the [`HtmlWebpackPlugin`][htmlPlugin] to generate an `index.html` file and automatically inject the built CSS and JS files. If you're project uses a separate templating or server rendering approach, then you will want to remove the HTML plugin and associated extension plugins ([`ScriptExtHtmlWebpackPlugin`][htmlScriptPlugin] and [`HtmlWebpackExcludeAssetsPlugin`][htmlExcludePlugin]). For details on loading assets in your project, see [asset manifest](#asset-manifest) below.
+This configuration uses the [`HtmlWebpackPlugin`][htmlPlugin] to generate an `index.html` file and automatically inject the built CSS and JS files. If your project uses a separate templating or server rendering approach, then you will want to remove the HTML plugin and associated extension plugins ([`ScriptExtHtmlWebpackPlugin`][htmlScriptPlugin] and [`HtmlWebpackExcludeAssetsPlugin`][htmlExcludePlugin]). For details on loading assets in your project, see [asset manifest](#asset-manifest) below.
 
 ### CSS
 Webpack handles the CSS pipeline. It includes `node-sass` and `postcss`. Postcss will respect the `postcss.config.js` file. Autoprefixer is the only plugin installed by default. Postcss will respect [`.browserslistrc`](#browserslist). Source maps will be generated when running in development.
@@ -38,6 +41,10 @@ The example setup in this repo uses a dynamic polyfill loading strategy. Differe
 There is a task to run the production build and inspect the bundle details. Webpack will generate a static page using [`BundleAnalyzerPlugin`][analyzerPlugin]. Run `npm run build:stats` and navigate to http://localhost:3000/bundle-report.html.
 
 <!-- links -->
+[eslint]: https://github.com/eslint/eslint
+[eslintSB]: https://github.com/sparkbox/eslint-config-sparkbox
+[stylelint]: https://github.com/stylelint/stylelint
+[stylelintSB]: https://github.com/sparkbox/stylelint-config-sparkbox
 [wds]: https://github.com/webpack/webpack-dev-server
 [htmlPlugin]: https://github.com/jantimon/html-webpack-plugin
 [htmlScriptPlugin]: https://github.com/numical/script-ext-html-webpack-plugin
